@@ -21,7 +21,6 @@ class PooledOLS():
         mod = sm.OLS(self.y_dep, self.X)
         res = mod.fit()
         self.OLScov_ = res.cov_params
-        print(res.summary())
         return(res)
 
 class FEEstimator():
@@ -41,7 +40,6 @@ class FEEstimator():
         self.demean_X = demeaned_dataset.drop(self.y, axis = 1)
         mod = sm.OLS(self.demean_y, self.demean_X)
         res = mod.fit()
-        print(res.summary())
         return(res)
         
         
@@ -60,7 +58,6 @@ class BetweenEstimator():
         mod = sm.OLS(self.timemean_y, self.timemean_X)
         res = mod.fit()
         self.residuals_ = self.timemean_y - res.predict()
-        print(res.summary())
         return(res)
 
         
